@@ -1,0 +1,4 @@
+{
+    "baseConfig": "trifid:config-sparql.json",
+    "sparqlEndpointUrl": "http://jena:3030/playground/query"
+}

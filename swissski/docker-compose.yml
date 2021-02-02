@@ -1,0 +1,29 @@
+version: '3'
+services:
+  fuseki-data:
+    image: busybox
+    tty: true
+    volumes:
+    - persistent-data:/fuseki
+  jena:
+    image: stain/jena-fuseki
+    ports:
+    - "3030:3030"
+    environment:
+    - ADMIN_PASSWORD=admin
+    depends_on:
+    - fuseki-data
+    volumes:
+    - persistent-data:/fuseki
+  trifid:
+    image: zazuko/trifid
+    ports:
+    - "8080:8080"
+    volumes:
+    - ./trifid-config/config.json:/app/config.json
+    environment:
+    - DEBUG=trifid:*
+    depends_on:
+    - jena
+volumes:
+  persistent-data:
