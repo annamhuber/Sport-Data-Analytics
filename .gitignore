@@ -7,6 +7,8 @@ __pycache__/
 # C extensions
 *.so
 
+Data/matchdata_19_20.pkl
+
 # Distribution / packaging
 .Python
 build/
